@@ -1,7 +1,7 @@
-# Understanding and Summarizing Groups of Datasets
+# Visualizing and Understanding Dataset Search Results
 
 
-Group Members: Erin McGowan, Sonia Castelo Quispe, and Shirley Berry
+Group Members: Sonia Castelo, Erin McGowan, and Shirley Berry
 
 
 Course: Big Data CS-GY 6513 Section C
