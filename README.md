@@ -1,4 +1,4 @@
-# Understanding the Impact of the COVID-19 Pandemic
+# Understanding and Summarizing Groups of Datasets
 
 
 Group Members: Erin McGowan and Sonia Castelo Quispe
