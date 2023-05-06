@@ -18,102 +18,36 @@ from grandalf.graphs import Vertex, Edge, Graph
 from grandalf.layouts import SugiyamaLayout, DummyVertex
 from netgraph_functions import get_geometric_layout
 
-#function to get a matrix containing the jaccard similarity between every pair of titles in the set of datasets
-def title_jaccard_similarity(df, shingle_length):
+#function to get a matrix containing the jaccard similarity between every pair of a given list of attributes (titles/descriptions/etc) in the set of datasets
+def jaccard_similarity(df, attribute_list, shingle_length):
   #make a len(df) by len(df) matrix filled with zeros
   matrix = np.zeros((len(df), len(df)))
 
   for i in range(len(df)):
-    for j in range(len(df)):
-      if i == j:
-        matrix[i][j] = 1
-      elif i > j:
-        continue
-      else:
-        title1 = df["title"][i]
-        title2 = df["title"][j]
-        if pd.isnull(title1) or pd.isnull(title2):
-          matrix[i][j] = 0
-          matrix[j][i] = 0
+      for j in range(len(df)):
+        if i == j:
+          matrix[i][j] = 1
+        elif i > j:
+          continue
         else:
-          shingles1 = ks.shingleset_range(title1, shingle_length, shingle_length)
-          shingles2 = ks.shingleset_range(title2, shingle_length, shingle_length)
+          all1 = ""
+          all2 = ""
+          for k in range(len(attribute_list)):
+            all1 = all1 + df[attribute_list[k]][i]
+            all2 = all2 + df[attribute_list[k]][j]
+
+          if pd.isnull(all1) or pd.isnull(all2):
+            matrix[i][j] = 0
+            matrix[j][i] = 0
+
+          shingles1 = ks.shingleset_range(all1, shingle_length, shingle_length)
+          shingles2 = ks.shingleset_range(all2, shingle_length, shingle_length)
           intersection = len(set(shingles1).intersection(shingles2))
           union = len(set(list(shingles1) + list(shingles2)))
           similarity = intersection/union
           matrix[i][j] = similarity
           matrix[j][i] = similarity
-
-  return matrix
-
-
-#function to get a matrix containing the jaccard similarity between every pair of descriptions in the set of datasets
-def description_jaccard_similarity(df, shingle_length):
-  #make a len(df) by len(df) matrix filled with zeros
-  matrix = np.zeros((len(df), len(df)))
-
-  for i in range(len(df)):
-    for j in range(len(df)):
-      if i == j:
-        matrix[i][j] = 1
-      elif i > j:
-        continue
-      else:
-        title1 = df["description"][i]
-        title2 = df["description"][j]
-        if pd.isnull(title1) or pd.isnull(title2):
-          matrix[i][j] = 0
-          matrix[j][i] = 0
-        else:
-          shingles1 = ks.shingleset_range(title1, shingle_length, shingle_length)
-          shingles2 = ks.shingleset_range(title2, shingle_length, shingle_length)
-          intersection = len(set(shingles1).intersection(shingles2))
-          union = len(set(list(shingles1) + list(shingles2)))
-          similarity = intersection/union
-          matrix[i][j] = similarity
-          matrix[j][i] = similarity
-
-  return matrix
-
-
-#function to get a matrix containing the jaccard similarity between every pair of titles and descriptions (treated as one string for each dataset) in the set of datasets
-def title_and_description_jaccard_similarity(df, shingle_length):
-  #make a len(df) by len(df) matrix filled with zeros
-  matrix = np.zeros((len(df), len(df)))
-
-  for i in range(len(df)):
-    for j in range(len(df)):
-      if i == j:
-        matrix[i][j] = 1
-      elif i > j:
-        continue
-      else:
-        title1 = df["title"][i]
-        title2 = df["title"][j]
-        desc1 = df["description"][i]
-        desc2 = df["description"][j]
-        if (pd.isnull(title1) and pd.isnull(desc1)) or (pd.isnull(title2) and pd.isnull(desc2)):
-          matrix[i][j] = 0
-          matrix[j][i] = 0
-        else:
-          if pd.isnull(title1) and not pd.isnull(desc1):
-            both1 = desc1
-          elif pd.isnull(desc1) and not pd.isnull(title1):
-            both1 = title1
-          elif pd.isnull(title2) and not pd.isnull(desc2):
-            both2 = desc2
-          elif pd.isnull(desc2) and not pd.isnull(title2):
-            both2 = title2
-          else:
-            both1 = title1 + " " + desc1
-            both2 = title2 + " " + desc2
-          shingles1 = ks.shingleset_range(both1, shingle_length, shingle_length)
-          shingles2 = ks.shingleset_range(both2, shingle_length, shingle_length)
-          intersection = len(set(shingles1).intersection(shingles2))
-          union = len(set(list(shingles1) + list(shingles2)))
-          similarity = intersection/union
-          matrix[i][j] = similarity
-          matrix[j][i] = similarity
+    
 
   return matrix
 
