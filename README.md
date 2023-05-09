@@ -11,8 +11,8 @@ Course: Big Data CS-GY 6513 Section C
 
 ```
 │
-├── custom_functions.py                         <- Python functions used to ...
-├── netgraph_functions.py                       <- Python functions used to ...
+├── custom_functions.py                         <- Python functions used to compute similarity based on jaccard similarity
+├── netgraph_functions.py                       <- Python functions used to compute x and y values using force-directed graph algorithm
 ├── taxi_metadata_2023_05_04.csv                <- Taxi metadata generated from a search for the "taxi" keyword on May 5, 2023
 ├── taxi_metadata_2023_05_04_with_similarity_coordinates.csv                <- The same taxi metadata with the addition of the x and y coordinates as calculated by the similarity measurements.
 ├── requirements.txt/      	  	        <- Python package versions
