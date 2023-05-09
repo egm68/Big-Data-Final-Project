@@ -63,3 +63,6 @@ pip install datasets-summarizer
 
 ## Reproducing
 Figures 3, 4, 6, 7, and 8 as referenced in our paper can be reproduced and interacted with using the `DatasetsSummarizer_Tool_Demo.ipynb` notebook. This demo notebook uses the same metadata that we used to produce the figures in the paper. Using one of the other two notebooks could result in slight variations in results if any of the datasets have changed or been updated since our results were produced.
+
+This project should not require any specialized hardware to reproduce, and any specialized packages have been included in the requirements.txt file and the notebooks themselves. We were able to run this project end to end on a computer with the following specs: Mac M1Pro, 10 cores, 16 GB of memory
+
