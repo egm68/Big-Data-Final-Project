@@ -8,15 +8,16 @@ Course: Big Data CS-GY 6513 Section C
 
 ## Project structure
 
+
 ```
 │
-├── custom_functions.py      		  			<- Python functions used to ...
-├── netgraph_functions.py      		  			<- Python functions used to ...
-├── start_from_metadata.ipynb      		        <- See below
+├── custom_functions.py                         <- Python functions used to ...
+├── netgraph_functions.py                       <- Python functions used to ...
 ├── taxi_metadata_2023_05_04.csv                <- Taxi metadata generated from a search for the "taxi" keyword on May 5, 2023
+├── requirements.txt/      	  	        <- Python package versions
 ├── DatasetsSummarizer_Tool_Demo.ipynb          <- Visualizations of taxi data in Jupyter notebook
-├── requirements.txt/      		                <- Python package versions
-├── start_from_metadata.ipynb/                  <- See below
+├── full_pipeline.ipynb/                        <- See below
+├── start_from_metadata.ipynb                   <- See below
 
 ```
 
