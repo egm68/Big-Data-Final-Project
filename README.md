@@ -37,6 +37,11 @@ Note that we used another GitHub repo (https://github.com/soniacq/DatasetsVis) t
 
 ( Click one dataset from the list of results to open the Detail View.)
 
+**Report**: [It is available here](https://github.com/egm68/dataset-visualization/blob/main/report/Visualizing_and_Understanding_Dataset_Search_Results_paper.pdf)
+
+**Video - supported interactions**: [https://youtu.be/sMwO6fo4SyI](https://youtu.be/sMwO6fo4SyI)
+
+
 ### Demo
 
 Live demo (Google Colab):
